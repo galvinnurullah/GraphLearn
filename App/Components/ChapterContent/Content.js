@@ -13,7 +13,7 @@ export default function Content({ content,onChapterFinish }) {
     const onNextBtnPress = (index) => {
         if (content?.length <= index + 1) {
             navigation.goBack();
-            onChapterFinish()
+            onChapterFinish();
             return;
         }
         setActiveIndex(index + 1)
@@ -51,6 +51,8 @@ export default function Content({ content,onChapterFinish }) {
                             output={item?.output?.html} />
                       
                         </ScrollView>
+
+                        {/* TOMBOL SELANJUTNYA/FINISH PADA CONTENT START */}
                         <TouchableOpacity
                             style={{ marginTop: 10 ,
                                 position:'absolute',
@@ -62,19 +64,20 @@ export default function Content({ content,onChapterFinish }) {
                         >
                             <Text style={{
                                 padding: 15,
-                                backgroundColor: Colors.PRIMARY,
+                                backgroundColor: '#0365D9',
                                 color: Colors.WHITE,
                                 textAlign: 'center',
-                                fontFamily: 'outift',
+                                fontFamily: 'outfit',
                                 
                                 fontSize: 17,
                                 borderRadius: 10
                             }}>
                                 {
-                                    content?.length > index + 1 ? 'Next' : 'Finish'
+                                    content?.length > index + 1 ? 'Selanjutnya' : 'Selesai'
                                 }
                             </Text>
                         </TouchableOpacity>
+                        {/* TOMBOL SELANJUTNYA/FINISH PADA CONTENT END */}
                     </View>
                 )}
             />

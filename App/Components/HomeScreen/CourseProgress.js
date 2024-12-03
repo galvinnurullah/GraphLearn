@@ -11,19 +11,22 @@ export default function CourseProgress() {
 
     const {user}=useUser();
     const navigation=useNavigation();
+
     const [progressCourseList,setProgressCourseList]=useState();
     useEffect(()=>{
         user&&GetAllProgressCourseList()
     },[user])
+
     const GetAllProgressCourseList=()=>{
         GetAllProgressCourse(user.primaryEmailAddress.emailAddress)
         .then(resp=>{
             setProgressCourseList(resp.userEnrolledCourses)
         })
     }
+
   return progressCourseList&&(
     <View>
-    <SubHeading text={'In Porgress'} 
+    <SubHeading text={'Sedang Dipelajari'}
     color={Colors.WHITE} />
 
             <FlatList
@@ -34,7 +37,8 @@ export default function CourseProgress() {
                 renderItem={({ item }) => (
                     <TouchableOpacity
                     onPress={()=>navigation.navigate('couse-detail',{
-                        course:item.course
+                        course:item.course,
+                        // description:item.course?.description?.text
                     })}
                     >
                         <CourseItem item={item.course}

@@ -2,16 +2,24 @@ import { View, Text, Image } from 'react-native'
 import React from 'react'
 import Colors from '../../Utils/Colors';
 import { Ionicons } from '@expo/vector-icons';
+import def from '../../../assets/images/logo.png'
 import CourseProgressBar from './CourseProgressBar';
 export default function CourseItem({item,completedChapter}) {
+    console.log("Course Item: " + item?.banner?.url);
   return (
     <View style={{
         padding: 10,
         backgroundColor: Colors.WHITE,
         marginRight: 15, borderRadius: 15
     }}>
-        <Image source={{ uri: item?.banner?.url }}
+        {/* BANNER PADA HOME START */}
+        {/* <Image source={item.banner?.url ? { uri: item.banner.url } : require('../../../assets/images/logo.png')}
+            style={{ width: 210, height: 120, borderRadius: 15 }} /> */}
+
+        <Image source={{uri: item?.banner[0]?.url}} 
             style={{ width: 210, height: 120, borderRadius: 15 }} />
+        {/* BANNER PADA HOME END*/}
+        
         <View style={{ padding: 7 }}>
             <Text style={{
                 fontFamily: 'outfit-medium',
@@ -29,20 +37,20 @@ export default function CourseItem({item,completedChapter}) {
                     <Ionicons name="book-outline" size={18} color="black" />
                     <Text style={{fontFamily:'outfit'}}>{item?.chapters?.length} Chapters</Text>
                 </View>
-                <View style={{
+                {/* <View style={{
                     display: 'flex',
                     flexDirection: 'row',
                     alignItems: 'center', gap: 5, marginTop: 5
                 }}>
                     <Ionicons name="md-time-outline" size={18} color="black" />
                     <Text style={{fontFamily:'outfit'}}>{item?.time}</Text>
-                </View>
+                </View> */}
                 <View>
                 </View>
             </View>
-            <Text style={{marginTop:5,
+            {/* <Text style={{marginTop:5,
             color:Colors.PRIMARY,
-            fontFamily:'outfit-medium'}}>{item.price==0?'Free':item.price}</Text>
+            fontFamily:'outfit-medium'}}>{item.price==0?'Free':item.price}</Text> */}
         </View>
        {completedChapter!=undefined?
         <CourseProgressBar 

@@ -1,7 +1,8 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import * as WebBrowser from "expo-web-browser";
-import app from './../../assets/images/app.png'
+import app from './../../assets/images/app2.png'
+import logo from './../../assets/images/logo.png'
 import Colors from '../Utils/Colors'
 import { useOAuth } from "@clerk/clerk-expo";
 
@@ -36,18 +37,23 @@ export default function LoginScreen() {
       objectFit:'contain',marginTop:70}} />
       <View style={{
         height:400,
-        backgroundColor:Colors.PRIMARY,
+        backgroundColor:'#0365D9',
         width:'100%',
-        marginTop:-100,
-        padding:20
+        marginTop:-200,
+        padding:20,
+        justifyContent: 'center',
+        alignItems: 'center'
       }}>
+        
+        {/* Logo Kuy Belajar */}
+        <Image source={logo}
+      style={{width:200,height:200,
+      objectFit:'contain', marginTop:-100}} />
+
+        {/* TEKS */}
         <Text style={{textAlign:'center',
-    fontSize:35,color:Colors.WHITE,
-    fontFamily:'outfit-bold',marginTop:30}}>CODEBOX</Text>
-     <Text style={{textAlign:'center',
-    fontSize:20,marginTop:20,
-    color:Colors.LIGHT_PRIMARY,
-    fontFamily:'outfit'}}>Your Ultimate Programming Learning Box</Text>
+    fontSize:25,marginTop:-50, color:Colors.WHITE,
+    fontFamily:'outfit'}}>Belajar jadi menyenangkan bersama kami</Text>
      
      <TouchableOpacity 
      onPress={onPress}
@@ -60,8 +66,8 @@ export default function LoginScreen() {
         <Image source={google} 
         style={{width:40,height:40}}/>
         <Text style={{fontSize:20,
-        color:Colors.PRIMARY,
-        fontFamily:'outfit'}}>Sign In with Google</Text>
+        color:'#0365D9',
+        fontFamily:'outfit'}}>Masuk dengan Google</Text>
      </TouchableOpacity>
       </View>
     </View>

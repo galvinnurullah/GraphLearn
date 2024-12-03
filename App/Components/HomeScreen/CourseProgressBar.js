@@ -14,7 +14,7 @@ export default function CourseProgressBar({totalChapter,completedChapter}) {
         <View style={{
         width:width,
         height:7,
-        backgroundColor:Colors.PRIMARY,
+        backgroundColor:'#0365D9',
         borderRadius:99
     }}>
 

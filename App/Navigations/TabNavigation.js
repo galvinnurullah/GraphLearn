@@ -15,6 +15,8 @@ export default function TabNavigation() {
    <Tab.Navigator screenOptions={{
     headerShown:false
    }}>
+
+   {/* HOME */}
     <Tab.Screen name='home' component={HomeScreenNavigation} 
     options={{
         tabBarIcon:({color,size})=>(
@@ -22,20 +24,26 @@ export default function TabNavigation() {
         )
     }}
     />
-    <Tab.Screen name='my-course' component={MyCourse} 
+
+    {/* MY COURSE */}
+    <Tab.Screen name='Kursus' component={MyCourse} 
      options={{
         tabBarIcon:({color,size})=>(
             <Ionicons name="book" size={size} color={color} />
         )
     }}/>
-    <Tab.Screen name='leaderboard' 
+
+    {/* LEADERBOARD */}
+    {/* <Tab.Screen name='leaderboard' 
     component={LeaderBoard} 
     options={{
         tabBarIcon:({color,size})=>(
             <MaterialIcons name="leaderboard" size={size} color={color} />
         )
-    }}/>
-    <Tab.Screen name='profile' 
+    }}/> */}
+
+    {/* PROFILE */}
+    <Tab.Screen name='Profile' 
     component={ProfileScreen} 
     options={{
         tabBarIcon:({color,size})=>(

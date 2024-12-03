@@ -4,6 +4,7 @@ import { useUser } from '@clerk/clerk-expo'
 import Colors from '../../Utils/Colors';
 import Coin from './../../../assets/images/coin.png'
 import { Ionicons } from '@expo/vector-icons';
+
 export default function Header({userPoints}) {
     const {isLoaded,isSignedIn,user}=useUser();
   return isLoaded&&(
@@ -17,19 +18,22 @@ export default function Header({userPoints}) {
                 <Text style={styles.mainText}>{user?.fullName}</Text>
             </View>
         </View>
-        <View style={styles.rowStyle}>
+
+        {/* ICON COIN DAN POINT */}
+        {/* <View style={styles.rowStyle}>
             <Image source={Coin} style={{width:35,height:35}} />
             <Text style={styles.mainText}>{userPoints}</Text>
-        </View>
+        </View> */}
     </View>
+
     <View style={{backgroundColor:Colors.WHITE,paddingLeft:20,
     paddingRight:5,
     borderRadius:99,
     marginTop:25,
     display:'flex',flexDirection:'row',justifyContent:'space-between'}}>
-        <TextInput placeholder='Search Courses' 
+        <TextInput placeholder='Cari Kursus' 
         style={{fontFamily:'outfit',fontSize:18}} />
-        <Ionicons name="search-circle" size={50} color={Colors.PRIMARY} />
+        <Ionicons name="search-circle" size={50} color='#65CFF2' />
     </View>
     </View>
   )

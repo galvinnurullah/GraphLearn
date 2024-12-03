@@ -1,46 +1,42 @@
 import { request, gql } from 'graphql-request'
 //Replace This Complete Master Key
-const MASTER_URL="https://api-us-east-1-shared-usea1-02.hygraph.com/v2/<Your Key Goes Here>/master";
+// const MASTER_URL="https://api-us-east-1-shared-usea1-02.hygraph.com/v2/cm33atqin07hl07w5l4g4ldy1/master";
+const MASTER_URL="https://eu-west-2.cdn.hygraph.com/content/cm33atqin07hl07w5l4g4ldy1/master";
 
 export const getCourseList=async(level)=>{
     const query=gql`
-    query CourseList {
-        courses(where: {level: `+level+`}) {
-          id
-          name
-          price
-          level
-          tags
-          time
-          author
-          description {
-            markdown
-          }
-          banner {
-            url
-          }
-          chapters {
-            content {
-              heading
-              description {
-                markdown
-                html
-              }
-              output {
-                markdown
-                html
-              }
-            }
-            title
-            id
-          }
+query CourseList {
+  courses {
+    id
+    banner {
+      url
+    }
+    name
+    description {
+      text
+    }
+    chapters {
+      id
+      content {
+        heading
+        description {
+          markdown
+          html
         }
-      }      
-    `
-
+      }
+      title
+    }
+    hours {
+      text
+    }
+  }
+}`;
+  
     const result=await request(MASTER_URL,query);
     return result;
+
 }
+
 
 export const enrollCourse=async(courseId,userEmail)=>{
   const mutationQuery=gql`
@@ -85,7 +81,7 @@ export const getUserEnrolledCourse=async(courseId,userEmail)=>{
 }
 
 
-export const MarkChapterCompleted=async(chapterId,recordId,userEmail,points)=>{
+export const MarkChapterCompleted=async(chapterId,recordId,userEmail)=>{
   const mutationQuery=gql`
   mutation markChapterCompleted {
     updateUserEnrolledCourse(
@@ -102,10 +98,7 @@ export const MarkChapterCompleted=async(chapterId,recordId,userEmail,points)=>{
       }
     }
     
-      updateUserDetail(where: {email: "`+userEmail+`"}, 
-      data: {point: `+points+`}) {
-        point
-      }
+
       publishUserDetail(where: {email: "`+userEmail+`"}) {
         id
       }
@@ -118,7 +111,7 @@ export const MarkChapterCompleted=async(chapterId,recordId,userEmail,points)=>{
   return result; 
 }
 
-
+// ini dimodif point nya diilangin
 export const createNewUser=async(userName,email,profileImageUrl)=>{
   const mutationQuery=gql`
   mutation CreateNewUser {
@@ -200,13 +193,13 @@ export const GetAllProgressCourse=async(userEmail)=>{
           }
         }
         description {
-          markdown
+          text
         }
         id
         level
         name
-        price
-        time
+        hours {
+          text}
       }
     }
   }

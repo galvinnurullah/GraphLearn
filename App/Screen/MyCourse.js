@@ -10,10 +10,12 @@ import CourseProgressItem from '../Components/MyCourse/CourseProgressItem';
 export default function MyCourse() {
   const {user}=useUser();
     const navigation=useNavigation();
+
     const [progressCourseList,setProgressCourseList]=useState();
     useEffect(()=>{
         user&&GetAllProgressCourseList()
     },[user])
+
     const GetAllProgressCourseList=()=>{
         GetAllProgressCourse(user.primaryEmailAddress.emailAddress)
         .then(resp=>{
@@ -22,7 +24,7 @@ export default function MyCourse() {
     }
   return (
     <View>
-       <View style={{height:160,backgroundColor:Colors.PRIMARY,
+       <View style={{height:160,backgroundColor:'#0365D9',
       padding:30,}}>
       <Text style={{fontFamily:'outfit-bold',
     color:Colors.WHITE,
@@ -31,6 +33,7 @@ export default function MyCourse() {
       <FlatList
                 data={progressCourseList}
                 style={{marginTop:-50}}
+                
                 showsHorizontalScrollIndicator={false}
                 renderItem={({ item }) => (
                     <TouchableOpacity

@@ -12,7 +12,7 @@ export default function CourseProgressItem({item,completedChapter}) {
           backgroundColor: Colors.WHITE,
           marginRight: 15, borderRadius: 15
       }}>
-          <Image source={{ uri: item?.banner?.url }}
+          <Image source={{ uri: item?.banner[0]?.url }}
               style={{ width: '100%', height: 170, borderRadius: 15 }} />
           <View style={{ padding: 7 }}>
               <Text style={{
@@ -31,16 +31,16 @@ export default function CourseProgressItem({item,completedChapter}) {
                       <Ionicons name="book-outline" size={18} color="black" />
                       <Text style={{fontFamily:'outfit'}}>{item?.chapters?.length} Chapters</Text>
                   </View>
-                  <View style={{
+
+                  {/* <View style={{
                       display: 'flex',
                       flexDirection: 'row',
                       alignItems: 'center', gap: 5, marginTop: 5
                   }}>
                       <Ionicons name="md-time-outline" size={18} color="black" />
                       <Text style={{fontFamily:'outfit'}}>{item?.time}</Text>
-                  </View>
-                  <View>
-                  </View>
+                  </View> */}
+
               </View>
               <Text style={{marginTop:5,
               color:Colors.PRIMARY,

@@ -7,6 +7,7 @@ import ChapterSection from '../Components/CourseDetailScreen/ChapterSection';
 import { enrollCourse, getUserEnrolledCourse } from '../Services';
 import { useUser } from '@clerk/clerk-expo';
 import { CompleteChapterContext } from '../Context/CompleteChapterContext';
+
 export default function CourseDetailScreen() {
   const navigate=useNavigation();
   const params=useRoute().params;
@@ -25,6 +26,7 @@ export default function CourseDetailScreen() {
   useEffect(()=>{
     isChapterComplete&&GetUserEnrolledCourse();
   },[isChapterComplete])
+  
   const UserEnrollCourse=()=>{
     enrollCourse(params.course.id,user.primaryEmailAddress.emailAddress)
     .then(resp=>{

@@ -5,18 +5,25 @@ import HomeScreen from '../Screen/HomeScreen';
 import CourseDetailScreen from '../Screen/CourseDetailScreen';
 import ChapterContentScreen from '../Screen/ChapterContentScreen';
 import CourseCompletedScreen from '../Screen/CourseCompletedScreen';
+import MyCourse from '../Screen/MyCourse';
 
 const Stack=createStackNavigator();
 export default function HomeScreenNavigation() {
   return (
     <Stack.Navigator screenOptions={{headerShown:false}}>
         <Stack.Screen name='Home' component={HomeScreen} />
+        
         <Stack.Screen name='couse-detail' 
         component={CourseDetailScreen} />
-        <Stack.Screen name="chapter-content" component={ChapterContentScreen} />
-        <Stack.Screen 
-        name="course-complete" 
+        
+        <Stack.Screen name="chapter-content" 
+        component={ChapterContentScreen} />
+
+        <Stack.Screen name="course-complete" 
         component={CourseCompletedScreen} />
+
+      <Stack.Screen name="my-course" 
+        component={MyCourse} />
     
     </Stack.Navigator>
   )

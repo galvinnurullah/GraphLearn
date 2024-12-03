@@ -21,10 +21,12 @@ export default function ChapterContentScreen() {
     // console.log("RecordId",param.userCourseRecordId)
 
   },[param])
+
+  // ORIGINAL START
   const onChapterFinish=()=>{
-    const totalPoints=Number(userPoints)+param.content?.length*10;
+    // const totalPoints=Number(userPoints)+param.content?.length*10;
     MarkChapterCompleted(param.chapterId,param.userCourseRecordId,
-      user.primaryEmailAddress.emailAddress,totalPoints).then(resp=>{
+      user.primaryEmailAddress.emailAddress).then(resp=>{
       if(resp)
       {
         ToastAndroid.show('Chapter Completed!',ToastAndroid.LONG)
@@ -33,6 +35,16 @@ export default function ChapterContentScreen() {
       }
     })
   }
+  // ORIGINAL END
+
+  // MODIFIED START
+  // const onChapterFinish=()=>{
+  //   ToastAndroid.show('Chapter Completed!',ToastAndroid.LONG)
+  //   setIsChapterComplete(true);
+  // }
+  // MODIFIED END
+
+
   return param.content&&(
     <View>
       <Content content={param.content}
